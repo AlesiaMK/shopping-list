@@ -1,6 +1,21 @@
 /* Новые элементы должны добавляться в список по нажатию на Enter */
+const sendInput = document.querySelector('#input');
+const productList = document.querySelector('.items');
+sendInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            const itemMessage = sendInput.value;
 
-/* Пустые элементы не должны добавляться */
+            const newItem = document.createElement('div');
+            newItem.classList.add('product');
+            newItem.textContent = itemMessage;
+            productList.append(newItem);
+            newItem.addEventListener('click', function() {
+                newItem.classList.toggle('done');
+            });
+            sendInput.value = '';
+        };
+    })
+    /* Пустые элементы не должны добавляться */
 
 /* Если кликнуть на элемент списка, он зачеркивается */
 
